@@ -12,7 +12,7 @@ const Banner = () => {
         backgroundImage: `url(${BannerBg})`,
       }}
     >
-      <div className="hero-overlay"></div>
+      <div className=""></div>
       <div className="hero-content text-neutral-content text-center">
         <div className="">
           <img className="mx-auto mb-6" src={BannerProfile} alt="" />
