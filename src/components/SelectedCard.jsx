@@ -38,6 +38,7 @@ const SelectedCard = ({ player, handleCartDelet }) => {
       >
         Delete
       </button>
+      
     </div>
   );
 };
