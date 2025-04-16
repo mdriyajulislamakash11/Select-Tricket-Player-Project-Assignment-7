@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SelectedCard = ({ player, handleDelete }) => {
+const SelectedCard = ({ player, handleCartDelet }) => {
   const {
     playerId,
     name,
@@ -33,7 +33,7 @@ const SelectedCard = ({ player, handleDelete }) => {
         </div>
       </div>
       <button
-        onClick={() => handleDelete(playerId)}
+        onClick={() => handleCartDelet(playerId, biddingPrice)}
         className="text-white bg-red-500 hover:bg-red-600 px-4 py-1 rounded-full text-sm"
       >
         Delete

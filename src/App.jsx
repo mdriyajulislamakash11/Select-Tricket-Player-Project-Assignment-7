@@ -3,62 +3,68 @@ import "./App.css";
 import Banner from "./components/Banner";
 import Header from "./components/Header";
 import Toggle from "./components/Toggle";
+import { Toaster, toast } from "react-hot-toast";
 
 function App() {
   const [isActive, setIsActive] = useState({
     cart: true,
     state: "cart",
   });
-  const [addCoin, srtAddCoin] = useState(0);
+  const [addCoin, setAddCoin] = useState(0);
   const [Selected, setSelected] = useState([]);
 
-
   const handleSelectedCard = (card) => {
-    if (addCoin > 0) {
+    if (addCoin >= card.biddingPrice) {
+      const alreadySelected = Selected.find(
+        (p) => p.playerId === card.playerId
+      );
 
-      const plyarSelect = Selected.find((p) => p.playerId === card.playerId);
-
-      if(!plyarSelect){
-        setSelected([...Selected, card]);
-      }else(
-        alert("age thekei ase")
-      )
-
+      if (!alreadySelected) {
+        const newPlayer = [...Selected, card];
+        setSelected(newPlayer);
+        setAddCoin(addCoin - card.biddingPrice);
+        toast.success("Player added successfully!");
+      } else {
+        toast.error("This player has already been selected!");
+      }
     } else {
-      alert("age Coin add koro");
+      toast.error("Not enough coins! Please claim coins first.");
+
     }
   };
 
-  const handleFreeCoinClim = (coin) => {
-    const addMoney = coin + 1000;
-    srtAddCoin(addMoney);
+  const handleCartDelet = (id, price) => {
+    const deletedCard = Selected.filter((p) => p.playerId !== id);
+    setSelected(deletedCard);
+    setAddCoin(addCoin + price);
+    toast.success("Player removed. Coin refunded!");
+  };
+
+  const handleFreeCoinClim = () => {
+    const addMoney = addCoin + 1000;
+    setAddCoin(addMoney);
+    toast("🎉 Coin added successfully!");
   };
 
   const hanleStateButton = (state) => {
-    if (state === "cart") {
-      setIsActive({
-        cart: true,
-        state: "cart",
-      });
-    } else {
-      setIsActive({
-        cart: false,
-        state: "about",
-      });
-    }
+    setIsActive({
+      cart: state === "cart",
+      state: state,
+    });
   };
 
   return (
     <>
       <section className="w-11/12 mx-auto">
+        <Toaster position="top-right" />
         <Header addCoin={addCoin} />
         <Banner handleFreeCoinClim={handleFreeCoinClim} addCoin={addCoin} />
-
         <Toggle
           hanleStateButton={hanleStateButton}
           isActive={isActive}
           handleSelectedCard={handleSelectedCard}
           Selected={Selected}
+          handleCartDelet={handleCartDelet}
         />
       </section>
     </>

@@ -2,11 +2,17 @@ import React from "react";
 import AvailablePlayer from "./AvailablePlayer";
 import SelectedPlayer from "./SelectedPlayer";
 
-const Toggle = ({ hanleStateButton, isActive, handleSelectedCard, Selected }) => {
+const Toggle = ({
+  hanleStateButton,
+  isActive,
+  handleSelectedCard,
+  Selected,
+  handleCartDelet,
+}) => {
   return (
     <div>
       {/* Toggle Button */}
-      <div  className="my-24 text-right">
+      <div className="my-24 text-right">
         <button
           className={
             isActive.state === "cart"
@@ -29,9 +35,14 @@ const Toggle = ({ hanleStateButton, isActive, handleSelectedCard, Selected }) =>
         </button>
       </div>
 
-
       {/* Toggole components */}
-      <div>{isActive.cart ? <AvailablePlayer handleSelectedCard={handleSelectedCard} /> : <SelectedPlayer Selected={Selected} />}</div>
+      <div>
+        {isActive.cart ? (
+          <AvailablePlayer handleSelectedCard={handleSelectedCard} />
+        ) : (
+          <SelectedPlayer Selected={Selected} handleCartDelet={handleCartDelet}/>
+        )}
+      </div>
     </div>
   );
 };
