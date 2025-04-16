@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PlayersCart = ({ player }) => {
+const PlayersCart = ({ player, handleSelectedCard }) => {
   const {
     // playerId,
     name,
@@ -30,7 +30,7 @@ const PlayersCart = ({ player }) => {
         <p className="text-lg font-semibold text-green-600 mt-3">
           Price: {biddingPrice} coins
         </p>
-        <button className="mt-4 px-6 py-2 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-full">
+        <button onClick={() => handleSelectedCard(player)} className="mt-4 px-6 py-2 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-full">
           Choose
         </button>
       </div>

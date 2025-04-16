@@ -2,7 +2,7 @@ import React from "react";
 import AvailablePlayer from "./AvailablePlayer";
 import SelectedPlayer from "./SelectedPlayer";
 
-const Toggle = ({ hanleStateButton, isActive }) => {
+const Toggle = ({ hanleStateButton, isActive, handleSelectedCard, Selected }) => {
   return (
     <div>
       {/* Toggle Button */}
@@ -31,7 +31,7 @@ const Toggle = ({ hanleStateButton, isActive }) => {
 
 
       {/* Toggole components */}
-      <div>{isActive.cart ? <AvailablePlayer /> : <SelectedPlayer />}</div>
+      <div>{isActive.cart ? <AvailablePlayer handleSelectedCard={handleSelectedCard} /> : <SelectedPlayer Selected={Selected} />}</div>
     </div>
   );
 };

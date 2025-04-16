@@ -1,7 +1,8 @@
 import React from "react";
 import Logo from "../assets/Images/logo.png";
 
-const Header = () => {
+const Header = ({addCoin}) => {
+  
   return (
     <div className="flex justify-between items-center my-10 ">
       {/* navbar logo */}
@@ -21,7 +22,7 @@ const Header = () => {
         </div>
         {/* show add coin button */}
         <div className="ml-10">
-          <button className="btn font-bold">0 Coin</button>
+          <button className="btn font-bold">{addCoin} Coin</button>
         </div>
       </div>
     </div>
