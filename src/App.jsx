@@ -4,6 +4,7 @@ import Banner from "./components/Banner";
 import Header from "./components/Header";
 import Toggle from "./components/Toggle";
 import { Toaster, toast } from "react-hot-toast";
+import Footer from "./components/Footer";
 
 function App() {
   const [isActive, setIsActive] = useState({
@@ -66,7 +67,9 @@ function App() {
           Selected={Selected}
           handleCartDelet={handleCartDelet}
         />
+
       </section>
+        <Footer />
     </>
   );
 }
